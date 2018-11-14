@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  service: one
+  price: 1
+  description: MyText
+
+two:
+  name: MyString
+  service: two
+  price: 1
+  description: MyText
