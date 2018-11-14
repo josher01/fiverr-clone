@@ -34,7 +34,7 @@ namespace :dev do
       user = User.all.sample
       service = Service.create!(
         description: FFaker::Lorem::paragraph(sentence_count = 8),
-        user: user,
+        user_id: user.id,
         category: Category.all.sample,
         title: 'I will create '+ FFaker::Lorem::sentence(1),
         created_at: FFaker::Time::datetime
