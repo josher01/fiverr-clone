@@ -1,6 +1,6 @@
 namespace :dev do
   task :build => ["tmp:clear", "log:clear", "db:drop", "db:create", "db:migrate"] 
-  task :rebuild => [ "dev:build","db:seed", :fake_user, :fake_category, :fake_service, :fake_package, :fake_favorite]
+  task :rebuild => [ "dev:build","db:seed", :fake_user, :fake_category, :fake_service, :fake_package, :fake_favorite, :fake_review]
   
   task fake_user: :environment do   
     20.times do |i|
@@ -55,7 +55,7 @@ namespace :dev do
           description: FFaker::Lorem::sentence(5),
           is_commercial: [true,false].sample,
           delivery_time: rand(1..30),
-          revision_number: rand(1..9)
+          revision_number: rand(1..9),
           created_at: FFaker::Time::datetime
           )
       end
@@ -63,12 +63,11 @@ namespace :dev do
     puts "Total #{Package.count} packages created !"
   end
 
- 
 
   task fake_favorite: :environment do
     Favorite.destroy_all
       50.times do |i|
-        user = User.all.all.sample
+        user = User.all.sample
         service = Service.all.sample
         favorite = Favorite.create!(
           service: service,
@@ -77,6 +76,21 @@ namespace :dev do
         )
       end
     puts "Total #{Favorite.count} favorites created !"
+  end
+
+  task fake_review: :environment do
+    Review.destroy_all
+    Service.all.each do |service|
+      5.times do |i|
+        Review.create!(
+          service: service,
+          user: User.all.sample,
+          star: rand(1..5),
+          comment: FFaker::Lorem::sentence(5)
+          )
+      end
+    end
+    puts "Total #{Review.count} reviews created !"
   end
 
   
@@ -88,5 +102,6 @@ namespace :dev do
     Rake::Task["dev:fake_service"].execute
     Rake::Task["dev:fake_package"].execute
     Rake::Task["dev:fake_favorite"].execute
+    Rake::Task["dev:fake_review"].execute
   end
 end

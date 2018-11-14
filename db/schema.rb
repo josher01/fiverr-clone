@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_023155) do
+ActiveRecord::Schema.define(version: 2018_11_14_064619) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "package_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["package_id"], name: "index_cart_items_on_package_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -26,6 +41,34 @@ ActiveRecord::Schema.define(version: 2018_11_14_023155) do
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_favorites_on_service_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "package_id"
+    t.integer "order_id"
+    t.integer "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["package_id"], name: "index_order_items_on_package_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "price"
+    t.integer "quantity"
+    t.string "shipping_status"
+    t.string "integer"
+    t.integer "payment_status"
+    t.string "username"
+    t.integer "amount"
+    t.string "address"
+    t.string "phone"
+    t.integer "sn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "package_metrics", force: :cascade do |t|

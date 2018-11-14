@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :services, dependent: :destroy
+  has_many :buying_services, class_name: "Service", foreign_key: :service_id, dependent: :destroy
+  has_many :selling_services, class_name: "Service", foreign_key: :service_id, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :reviews
+
 
 end
