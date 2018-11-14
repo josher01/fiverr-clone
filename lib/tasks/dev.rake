@@ -63,7 +63,6 @@ namespace :dev do
     puts "Total #{Package.count} packages created !"
   end
 
-
   task fake_favorite: :environment do
     Favorite.destroy_all
       50.times do |i|
