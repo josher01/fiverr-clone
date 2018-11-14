@@ -53,6 +53,9 @@ namespace :dev do
           service: service,
           price: rand(50..999),
           description: FFaker::Lorem::sentence(5),
+          is_commercial: [true,false].sample,
+          delivery_time: rand(1..30),
+          revision_number: rand(1..9)
           created_at: FFaker::Time::datetime
           )
       end
