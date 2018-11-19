@@ -1,9 +1,25 @@
+$nav-link-font-size: 14px;
+$fa-icon-size: 20px;
+$category-icon-size: 55px;
+
+body {
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
+  color: grey;
+}
 .navbar{
   .nav-item.active{
     border-left: #444 3px solid;
   }
   .nav-link{
-    font-size:14px;
+    font-size: $nav-link-font-size;
     text-transform: uppercase;
     padding-left: 1em !important;
     padding-right: 1em !important;
@@ -27,4 +43,34 @@
   background:url('image3.jpg');
   background-size: cover;
   
+}
+
+section#home-category i{
+  font-size: $category-icon-size; 
+  padding: 1rem;
+}
+
+.card.fa {
+  font-size: $fa-icon-size;
+}
+#home-heading {
+  position: relative;
+  min-height: 200px;
+  background: url("abstract-art-blur.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #fff; }
+
+.dark-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.home-service-wrapper {
+  width: 80%;
+  margin: 0 auto;
 }

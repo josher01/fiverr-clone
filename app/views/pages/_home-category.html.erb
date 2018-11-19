@@ -1,0 +1,14 @@
+<!-- HOME CATEGORY SECTION -->
+<section id="home-category" class="py-5">
+  <div class="container">
+    <div class="row">
+      <% @categories.each do |category| %>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="<%= category_fa_icon(category.title)%> border-bottom border-primary"></i>
+          <h3 class="pt-3"><%= link_to category.title, root_path %></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur.</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -4,4 +4,6 @@ class Service < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :packages, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 end

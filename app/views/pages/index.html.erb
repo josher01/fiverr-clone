@@ -1,54 +1,34 @@
-<!--SHOWCASE SLIDER -->
-<section id="showcase">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="0"></li>
-      <li data-target="#myCarousel" data-slide-to="0"></li>
-    </ol>
-
-    <div class="carousel-inner">
-      <div class="carousel-item carousel-image-1 active">
-        <div class="container">
-          <div class="carousel-caption d-none d-sm-block text-right mb-5">
-            <h1 class="display-3">Heading One</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo non quam ipsam sequi odio recusandae tempore totam necessitatibus repellat eveniet alias id aperiam, voluptas, qui numquam fuga officiis suscipit.
-            </p>
-            <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carousel-image-2">
-        <div class="container">
-          <div class="carousel-caption d-none d-sm-block mb-5">
-            <h1 class="display-3">Heading Two</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo non quam ipsam sequi odio recusandae tempore  totam necessitatibus repellat eveniet alias id aperiam, voluptas, qui numquam fuga officiis suscipit.
-            </p>
-            <a href="#" class="btn btn-primary btn-lg">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carousel-image-1">
-        <div class="container">
-          <div class="carousel-caption d-none d-sm-block text-right mb-5">
-            <h1 class="display-3">Heading One</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo non quam ipsam sequi odio recusandae tempore  totam necessitatibus repellat eveniet alias id aperiam, voluptas, qui numquam fuga officiis suscipit.
-            </p>
-            <a href="#" class="btn btn-success btn-lg">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
-      <span class="carousel-control-prev-icon">
-      </span>
-    </a>
-
-    <a href="#myCarousel" data-slide="next" class="carousel-control-next">
-      <span class="carousel-control-next-icon">
-      </span>
-    </a>
+<%= render 'pages/home-carousel' %>
+<%= render 'pages/home-category' %>
+<%= render 'pages/home-heading' %>
+<section id="home-service" class="py-5">
+  <div class="container pb-3">
+    <h1 class="bold text-center">The Most Popular Services</h3>
+    <h5 class="text-center">See what other people are looking for</h5>
   </div>
-
+  <div class="home-service-wrapper">
+    <div class="row">
+      <% @services.each do |service| %>
+        <div class="col-lg-4 col-md-6 col-sm-6 p-3">
+          <div class="card">
+            <img class="card-img-top img-fluid" src="http://www.lorempixel.com/400/200/sports/2" alt="Card img cap">
+            <div class="card-body">
+              <h5 class="card-title text-truncate">
+                <%= service.title %>
+              </h5>
+              <p><%= image_tag service.seller.avatar, size: '50x50', class: 'rounded-circle' %><span class="pl-3"><%= service.seller.name %></span></p>
+              <p class="card-text text-truncate">
+                <%= service.description %>
+              </p>
+            </div> 
+            <div class="card-footer">
+              <i class="fa fa-heart"></i>
+              <span><%= service.favorited_users.size %></span>
+              <span class="float-right small">STARTING AT <span class="h5">$<%= service.packages.first.price %></span></span>
+            </div>    
+          </div>   
+        </div>
+      <% end %>
+    </div>
+  </div>
 </section>
