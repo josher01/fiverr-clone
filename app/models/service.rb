@@ -6,4 +6,8 @@ class Service < ApplicationRecord
   has_many :packages, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
+
+  def standard_price
+    self.packages.where("name = 'Standard'").first.price
+  end
 end

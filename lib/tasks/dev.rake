@@ -47,16 +47,16 @@ namespace :dev do
     Package.destroy_all
     PACK_LIST = ['Standard', 'Silver', 'Golden']
     Service.all.each do |service|
-      PACK_LIST.each do |pack|
+      PACK_LIST.each_with_index do |pack, index|
         Package.create!(
           name: pack,
           service: service,
-          price: rand(50..999),
           description: FFaker::Lorem::sentence(5),
           is_commercial: [true,false].sample,
           delivery_time: rand(1..30),
           revision_number: rand(1..9),
-          created_at: FFaker::Time::datetime
+          created_at: FFaker::Time::datetime,
+          price: ((index+1)*100) + (rand(1..5)*50)
           )
       end
     end

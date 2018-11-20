@@ -1,0 +1,31 @@
+<section id="home-service" class="py-5">
+  <div class="container pb-3">
+    <h1 class="bold text-center">The Most Popular Services</h3>
+    <h5 class="text-center">See what other people are looking for</h5>
+  </div>
+  <div class="home-service-wrapper">
+    <div class="row">
+      <% @services.each do |service| %>
+        <div class="col-lg-4 col-md-6 col-sm-6 p-3">
+          <div class="card">
+            <img class="card-img-top img-fluid" src="http://www.lorempixel.com/400/200/sports/2" alt="Card img cap">
+            <div class="card-body">
+              <h5 class="card-title text-truncate">
+                <%= service.title %>
+              </h5>
+              <p><%= image_tag service.seller.avatar, size: '50x50', class: 'rounded-circle' %><span class="pl-3"><%= service.seller.name %></span></p>
+              <p class="card-text text-truncate">
+                <%= service.description %>
+              </p>
+            </div> 
+            <div class="card-footer">
+              <i class="fa fa-heart"></i>
+              <span><%= service.favorited_users.size %></span>
+              <span class="float-right small">STARTING AT <span class="h5">$<%= service.standard_price %></span></span>
+            </div>    
+          </div>   
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
