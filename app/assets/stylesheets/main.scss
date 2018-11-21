@@ -1,6 +1,7 @@
 $nav-link-font-size: 14px;
 $fa-icon-size: 20px;
 $category-icon-size: 55px;
+$grey: #8D8E8D;
 
 body {
   overflow-x: hidden;
@@ -12,7 +13,7 @@ a{
 }
 a:hover {
   text-decoration: none;
-  color: grey;
+  color: $grey;
 }
 .navbar{
   .nav-item.active{
@@ -32,16 +33,22 @@ a:hover {
 .carousel-image-1{
   background:url('image1.jpg');
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 
 }
 .carousel-image-2{
   background:url('image2.jpg');
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   
 }
 .carousel-image-3{
   background:url('image3.jpg');
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   
 }
 
@@ -83,6 +90,23 @@ section#home-category i{
 
 .underline {
   border-bottom: solid 1px;
-  border-bottom-color: grey;
+  border-bottom-color: $grey;
 }
 
+.cat-bar {
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+}
+.nav-link{
+  color: $grey;
+  &:hover {
+    color: green;
+    border-bottom: solid 2px;
+    border-bottom-color: green;
+  }
+}
+.nav-link:active {
+    color: green;
+    border-bottom: solid 2px;
+    border-bottom-color: pink;
+  }

@@ -1,18 +1,9 @@
 class ServicesController < ApplicationController
   def index
-    @q = Service.ransack(params[:q])
-    @services = @q.result
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def show
-  end
-
-  def update
+    @categories = Category.all
+    @category = Category.find(params[:category_id])
+    @category_services = @category.services
+    @q = @category_services.ransack(params[:q])
+    @services = @q.result || @category.services
   end
 end

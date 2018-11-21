@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light sticky-top p-3">
   <div class="container-fluid px-5">
-    <%= link_to image_tag('fiverr-vector-logo-small.png', height: 100, width: 120), root_path, class: "navbar-brand pr-5" %>
+    <%= link_to image_tag('fiverr-vector-logo-small.png', height: 120, width: 120), root_path, class: "navbar-brand pr-5" %>
     <div class="mr-auto">
       <%= form_tag("/search", method: :get, class: 'form-inline my-2 my-lg-0') do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search by tag...", class: 'form-control mr-sm-2' %>
