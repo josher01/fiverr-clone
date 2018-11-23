@@ -2,9 +2,17 @@ $nav-link-font-size: 14px;
 $fa-icon-size: 20px;
 $category-icon-size: 55px;
 $grey: #8D8E8D;
+$border-grey: #E0E1E0;
+
+
 
 body {
   overflow-x: hidden;
+}
+
+
+.border-light {
+  border-color: $border-grey !important;
 }
 
 a{

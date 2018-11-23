@@ -16,4 +16,10 @@ module ApplicationHelper
       "fa fa-industry"
     end 
   end
+
+  def sentence_capitalize(string)
+    string.split(' ').map(&:capitalize).join(' ')
+  end
 end
+
+

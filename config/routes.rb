@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :category, only: [:show] do
-    resources :services, only: [:index, :show]
+    resources :services, only: [:index]
   end
+  resources :services, except: [:index]
 
   
 

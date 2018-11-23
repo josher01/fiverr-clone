@@ -48,9 +48,10 @@ gem 'omniauth-github', '~> 1.3'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'fog-aws'
 gem 'redis', '3.3.1'
-gem 'owlcarousel-rails'
 gem 'ransack', '~> 2.1'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
+gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -12,10 +12,14 @@
  *
  *= require owl.carousel
  *= require owl.theme
+ *= require_self
+ *= require_tree .
  */
+
 @import "bootstrap";
 @import "font-awesome";
 @import "main";
+
 
 
 

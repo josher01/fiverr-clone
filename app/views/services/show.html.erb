@@ -1,1 +1,95 @@
-show.html.erb
+<%= render 'shared/category-nav' %>
+<div class="container">
+  <div class="row">
+    <!-- Service Photo Slider -->
+    <div class="col-lg-7 col-md-12 mr-5 border border-light">
+      <div class="h3 py-2 text-capitalize"><%= @service.title %></div>
+      <div class="owl-carousel owl-theme owl-loaded">
+        <div class="owl-stage-outer">
+          <div class="owl-stage">
+            <div class="owl-item" ><%= image_tag 'image1.jpg' %></div>
+            <div class="owl-item" ><%= image_tag 'image2.jpg' %></div>
+            <div class="owl-item" ><%= image_tag 'image3.jpg' %></div>
+            <div class="owl-item" ><%= image_tag 'image1.jpg' %></div>
+            <div class="owl-item" ><%= image_tag 'image2.jpg' %></div>
+            <div class="owl-item" ><%= image_tag 'image3.jpg' %></div>
+          </div>
+        </div>
+      </div>
+      <!-- Package Comparison Table -->
+      <div class="package-table">
+        <table class="table table-bordered">         
+          <thead>
+            <tr class="table-secondary"><th scope="col" colspan="4" class="h3">Compare Packages</th></tr>
+            <tr>
+              <th class="table-secondary" scope="col"></th>
+              <% @packages.each do |package| %>
+              <th scope="col" class="text-center"><%= package.name %><br>$<%= package.price %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="table-secondary" scope="row">Description</th>
+              <% @packages.each do |package| %>
+              <td class="text-center"><%= package.description %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th class="table-secondary" scope="row">Commercial Use</th>
+              <% @packages.each do |package| %>
+              <td class="text-center"><%= package.is_commercial ? "Yes" : "No" %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th class="table-secondary" scope="row">Revision</th>
+              <% @packages.each do |package| %>
+              <td class="text-center"><%= package.revision_number %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th class="table-secondary" scope="row">Delivery Time</th>
+              <% @packages.each do |package| %>
+              <td class="text-center"><%= pluralize(package.delivery_time, 'Days') %></td>
+              <% end %>
+            </tr>
+          </tbody>       
+        </table>       
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 border border-light"> 
+      <div class="text-center py-5">
+        <%= image_tag @seller.avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2' %>
+        <p class="h3 bold py-3"><%= @seller.name %></p>
+        <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 3.0</p>  
+        <button class="btn btn-outline-success">Contact Me</button>
+        <hr>
+        <p class="text-secondary"><%= @seller.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:1,
+            nav:true
+        },
+        1000:{
+            items:1,
+            nav:true,
+            loop:false
+        }
+    }
+})
+</script>
