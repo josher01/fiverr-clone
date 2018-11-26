@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :services
   has_many :favorites, dependent: :destroy
+  has_many :favorited_services, through: :favorites, source: :service
   has_many :reviews
   has_many :orders
   has_many :order_items, through: :orders

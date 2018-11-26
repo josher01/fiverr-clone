@@ -61,7 +61,7 @@
       <div class="text-center py-5">
         <%= image_tag @seller.avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2' %>
         <p class="h3 bold py-3"><%= @seller.name %></p>
-        <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 3.0</p>  
+        <div id="stars"></div>
         <button class="btn btn-outline-success">Contact Me</button>
         <hr>
         <p class="text-secondary"><%= @seller.description %></p>
@@ -91,5 +91,12 @@
             loop:false
         }
     }
-})
+  })
+
+  $('#stars').raty({
+    path: '/assets',
+    score: 1
+  });
+
+
 </script>
