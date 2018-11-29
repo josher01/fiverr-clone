@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <!-- Service Photo Slider -->
-    <div class="col-lg-7 col-md-12 mr-5 border border-light">
+    <div class="col-lg-7 col-md-12 border border-light">
       <div class="h3 py-2 text-capitalize"><%= @service.title %></div>
       <div class="owl-carousel owl-theme owl-loaded">
         <div class="owl-stage-outer">
@@ -54,9 +54,10 @@
               <% end %>
             </tr>
           </tbody>       
-        </table>       
-      </div>
+        </table>
+      </div>   
     </div>
+    <div class="col"></div>
     <div class="col-lg-4 col-md-12 border border-light"> 
       <div class="text-center py-5">
         <%= image_tag @seller.avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2' %>
@@ -69,6 +70,61 @@
     </div>
   </div>
 </div>
+<div class="container p-0 mt-4 border border-light">
+  <div class="p-3">
+    <div class="py-3">
+      <div class="review-header pt-3">
+        <span class="h3">Reviews</span>
+        <span id="all-stars-<%= @service.id %>" class="pl-2"></span>
+        <span class="pl-2 yellow"><%= @service.buyer_review_star.to_i %></span>
+        <span class="pl-2">(<%= pluralize(@service.buyer_review_count, "reivew") %>)</span>
+        <div class="underline p-3"></div>
+      </div>
+    </div>
+     
+    <% @packages.each do |package| %>
+      <% package.buyer_reviews.each do |buyer_review| %>
+        <% package.seller_reviews.each do |seller_review| %>
+          <div class="review-wrapper pt-5">
+            <div class="container-fluid pb-5">
+                <div class="d-flex justify-content-start buyer_review">
+                  <div class="buyer_img pr-3">
+                    <%= image_tag buyer_review.buyer.avatar, size: '100x100', class: 'img-fluid rounded-circle' %>
+                  </div>
+                  <div class="align-self-center">
+                    <%= buyer_review.buyer.name %>
+                    <span class="px-1 yellow"><%= image_tag 'star-on.png' %> <%= package.buyer_review_star.to_i %></span>      
+                  </div>
+                  <div class="align-self-center pl-5 buyer_msg">
+                      <div><%= buyer_review.comment %></div><br>
+                      <div class="text-muted"><%= time_ago_in_words(buyer_review.created_at) %></div>
+                  </div>
+                </div>
+            </div>
+            <div class="container-fluid pt-5">
+                <div class="d-flex justify-content-end seller_review">
+                  <div class="seller_img pr-3"><%= image_tag seller_review.seller.avatar, size: '100x100', class: 'img-fluid rounded-circle' %></div>
+                  <div class="align-self-center">
+                    <%= seller_review.seller.name %>
+                    <span class="pl-1 yellow"><%= image_tag 'star-on.png' %> <%= package.seller_review_star.to_i %></span>    
+                  </div>
+                  <div class="align-self-center pl-5 seller_msg">
+                      <div><%= seller_review.comment %></div><br>
+                      <div class="text-muted"><%= time_ago_in_words(seller_review.created_at) %></div>
+                  </div>
+                </div>
+            </div>
+            <div class="underline py-2"></div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>  
+
+
+ 
+
 
 
 <script>
@@ -91,12 +147,18 @@
             loop:false
         }
     }
-  })
-
+  });
+</script>
+<script>
   $('#stars').raty({
     path: '/assets',
     score: 1
   });
 
-
+  $('#all-stars-<%= @service.id %>').raty({
+    path: '/assets',
+    readOnly: true,
+    size: 30,
+    score: <%= @service.buyer_review_star %>
+  });
 </script>

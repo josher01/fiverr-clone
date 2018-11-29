@@ -3,6 +3,7 @@ $fa-icon-size: 20px;
 $category-icon-size: 55px;
 $grey: #8D8E8D;
 $border-grey: #E0E1E0;
+$star-yellow: #EB9F2F;
 
 
 
@@ -118,3 +119,11 @@ section#home-category i{
     border-bottom: solid 2px;
     border-bottom-color: pink;
   }
+
+.text-left .text-right {
+  display: inline-block;
+}
+
+.yellow {
+  color: $star-yellow;
+}

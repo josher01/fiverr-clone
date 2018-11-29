@@ -1,6 +1,6 @@
 namespace :dev do
   task :build => ["tmp:clear", "log:clear", "db:drop", "db:create", "db:migrate"] 
-  task :rebuild => [ "dev:build","db:seed", :fake_user, :fake_category, :fake_service, :fake_package, :fake_favorite, :fake_order, :fake_order_items, :fake_seller_review, :fake_buyer_review]
+  task :rebuild => [ "dev:build","db:seed", :fake_user, :fake_category, :fake_service, :fake_package, :fake_favorite, :fake_order, :fake_order_items, :fake_buyer_review, :fake_seller_review]
   
   task fake_user: :environment do   
     20.times do |i|
@@ -20,7 +20,7 @@ namespace :dev do
 
   task fake_category: :environment do
     Category.destroy_all
-    CAT_LIST = ["Graphic & Design", "Digital Marketing", "Music & Audio", "Programming & Tech", "Business", "Fun & Lifestyle", "Writing & Translation"]
+    CAT_LIST = ["Graphic & Design", "Digital Marketing", "Music & Audio", "Programming & Tech", "Fun & Lifestyle", "Writing & Translation"]
     CAT_LIST.each do |cat|
       Category.create!(title: cat)
     end
@@ -98,52 +98,48 @@ namespace :dev do
 
   task fake_order_items: :environment do
     OrderItem.destroy_all
-    3.times do |i|
-      Package.all.each do |package|
-        OrderItem.create!(
-          package_id: package.id,
-          order_id: Order.all.sample.id,
-          price: package.price,
-          quantity: 1
-          )
-      end
+    Order.all.each do |order|
+      package = Package.all.sample
+      OrderItem.create!(
+        package_id: package.id,
+        order_id: order.id,
+        price: package.price,
+        quantity: 1
+        )
     end
     puts "Total #{OrderItem.count} orderitems created !"
   end
 
-  task fake_seller_review: :environment do
-    SellerReview.destroy_all
-    Service.all.each do |service|
-      6.times do |i|
-        SellerReview.create!(
-          service: service,
-          seller_id: service.user_id,
-          star: 5,
-          comment: ["Thanks for the feedback! ", "Appreciated! ", "Sweet! "].sample + FFaker::Lorem::sentence(1)
-          )
-      end
-    end
-    puts "Total #{SellerReview.count} seller reviews created !"
-  end
-
   task fake_buyer_review: :environment do
     BuyerReview.destroy_all
-    Service.all.each do |service|
-      packages = service.packages
-      packages.each do |package|
-        if package.buyers
-          package.buyers.each do |buyer|
-            BuyerReview.create!(
-              service: service,
-              buyer_id: buyer.id,
-              star: rand(1..5),
-              comment: FFaker::Lorem::sentence(2)
-              )
-          end
-        end
+    100.times do |i|
+      package = Package.all.sample
+      buyers = package.buyers
+      buyer = buyers.all.sample
+      if buyer
+        BuyerReview.create!(
+          package: package,
+          buyer_id: buyer.id,
+          star: rand(1..5),
+          comment: FFaker::Lorem::sentence(3)
+        )
       end
     end
     puts "Total #{BuyerReview.count} buyer reviews created !"
+  end
+
+  task fake_seller_review: :environment do
+    SellerReview.destroy_all
+    BuyerReview.all.each do |buyer_review|
+        package = buyer_review.package
+        SellerReview.create!(
+          package: package,
+          seller_id: package.service.user_id,
+          star: 5,
+          comment: FFaker::Lorem::sentence(1)
+          )
+    end
+    puts "Total #{SellerReview.count} seller reviews created !"
   end
 
   
@@ -157,7 +153,7 @@ namespace :dev do
     Rake::Task["dev:fake_favorite"].execute
     Rake::Task["dev:fake_order"].execute
     Rake::Task["dev:fake_order_items"].execute
-    Rake::Task["dev:fake_seller_review"].execute
     Rake::Task["dev:fake_buyer_review"].execute
+    Rake::Task["dev:fake_seller_review"].execute
   end
 end
