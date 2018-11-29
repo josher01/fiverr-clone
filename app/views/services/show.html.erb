@@ -76,7 +76,7 @@
       <div class="review-header pt-3">
         <span class="h3">Reviews</span>
         <span id="all-stars-<%= @service.id %>" class="pl-2"></span>
-        <span class="pl-2 yellow"><%= @service.buyer_review_star.to_i %></span>
+        <span class="pl-2 yellow"><%= @service.buyer_review_star %></span>
         <span class="pl-2">(<%= pluralize(@service.buyer_review_count, "reivew") %>)</span>
         <div class="underline p-3"></div>
       </div>
@@ -93,7 +93,7 @@
                   </div>
                   <div class="align-self-center">
                     <%= buyer_review.buyer.name %>
-                    <span class="px-1 yellow"><%= image_tag 'star-on.png' %> <%= package.buyer_review_star.to_i %></span>      
+                    <span class="px-1 yellow"><%= image_tag 'star-on.png' %> <%= package.buyer_review_star %></span>      
                   </div>
                   <div class="align-self-center pl-5 buyer_msg">
                       <div><%= buyer_review.comment %></div><br>

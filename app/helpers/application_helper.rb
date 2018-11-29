@@ -1,5 +1,5 @@
 module ApplicationHelper
-  CAT_LIST = ["Graphic & Design", "Digital Marketing", "Music & Audio", "Programming & Tech", "Business", "Fun & Lifestyle", "Writing & Translation"]
+  CAT_LIST = ["Graphic & Design", "Digital Marketing", "Music & Audio", "Programming & Tech", "Fun & Lifestyle", "Writing & Translation"]
   def category_fa_icon(category_name)
     
     if category_name == CAT_LIST[0]

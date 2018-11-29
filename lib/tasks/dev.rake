@@ -112,7 +112,7 @@ namespace :dev do
 
   task fake_buyer_review: :environment do
     BuyerReview.destroy_all
-    100.times do |i|
+    80.times do |i|
       package = Package.all.sample
       buyers = package.buyers
       buyer = buyers.all.sample
