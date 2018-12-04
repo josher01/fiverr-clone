@@ -18,10 +18,13 @@
       <%= render 'layouts/navbar' %>
     </header>
     <%= yield %>
+    <% unless user_signed_in? %>
+      <%= render partial: 'devise/sessions/new' %>
+      <%= render partial: 'devise/registrations/new' %>
+    <% end %>
   </div>
 
   </body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  
 </html>

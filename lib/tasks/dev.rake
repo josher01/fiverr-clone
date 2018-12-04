@@ -2,7 +2,8 @@ namespace :dev do
   task :build => ["tmp:clear", "log:clear", "db:drop", "db:create", "db:migrate"] 
   task :rebuild => [ "dev:build","db:seed", :fake_user, :fake_category, :fake_service, :fake_package, :fake_favorite, :fake_order, :fake_order_items, :fake_buyer_review, :fake_seller_review]
   
-  task fake_user: :environment do   
+  task fake_user: :environment do  
+    User.destroy_all 
     20.times do |i|
       name = FFaker::Name::first_name
       file = "https://randomuser.me//api//portraits//women//#{i}.jpg"

@@ -13,17 +13,14 @@
       <ul class="navbar-nav ml-auto">
         <!-- Other Nav Tags -->
         <% if user_signed_in? %>
-          <% if current_user.admin? %>
-            <li class="nav-item"><%= link_to 'Admin後台', admin_root_path, class: "nav-link" %></li>
-          <% end %>
           <li class="nav-item"> <span class="navbar-text">Hi! <%= current_user.name %></span></li>
-          <li class="nav-item"><%= link_to'Profile', user_path(current_user), class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to'Chat Room', messages_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to'Profile', '#', class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to'Chat Room', '#', class: "nav-link" %></li>
           <li class="nav-item"><%= link_to'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to'Become a Seller', new_user_registration_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to'Join', new_user_registration_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to'Sign In', new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to'Join', new_user_registration_path, class: "nav-link",'data-toggle' =>"modal", 'data-target' => "#signupModal" %></li>
+          <li class="nav-item"><%= link_to'Sign In', new_user_session_path, class: "nav-link", 'data-toggle' =>"modal", 'data-target' => "#loginModal" %></li>
         <% end %>
       </ul>  
     </div> 
