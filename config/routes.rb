@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :services, except: [:index]
 
-  resources :users, only: [:new, :create, :show], path_names: {new: 'onboarding', show: 'profile'}
+  resources :users, only: [:new, :create, :show], path_names: {new: 'onboarding'}
 
   
 

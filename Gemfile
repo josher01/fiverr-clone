@@ -51,6 +51,8 @@ gem 'redis', '3.3.1'
 gem 'ransack', '~> 2.1'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
+gem 'country_select', '~> 3.1', '>= 3.1.1'
+gem 'language_list', '~> 1.2', '>= 1.2.1'
 
 
 group :development, :test do

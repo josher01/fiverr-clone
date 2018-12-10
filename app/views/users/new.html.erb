@@ -1,0 +1,20 @@
+<div class="container">
+<%= simple_form_for @user, wrapper: :horizontal_form, defaults: { input_html: { class: 'mt-3' },label_html: { class: 'mt-3' } } do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.input :name, required: true %>
+  <%= f.input :email, input_html: { autocomplete: 'email' }, required: true %>
+  <%= f.input :country, as: :country, required: true , prompt: true %>
+  <%= f.input :language, collection: LanguageList::COMMON_LANGUAGES, required: true ,prompt: true %>
+  <%= f.input :description, required: true ,hint: 'Minimum 150 words required' %>
+
+
+
+  <div class="form-group row mb-0">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.button :submit, class: "btn-success" %>
+      <%= f.button :button, "Cancel", type: "reset", class: "ml-3 btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
+</div>
