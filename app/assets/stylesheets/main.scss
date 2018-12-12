@@ -4,14 +4,21 @@ $category-icon-size: 55px;
 $grey: #8D8E8D;
 $border-grey: #E0E1E0;
 $star-yellow: #EB9F2F;
-
+$profile-icon-size: 18px;
+$background-light: #E0E1E0;
 
 
 body {
   overflow-x: hidden;
 }
 
-
+.background-light {
+  background-color: $background-light;
+}
+.show-container {
+  width: 80%;
+  margin: 0 auto;
+}
 .border-light {
   border-color: $border-grey !important;
 }
@@ -126,4 +133,8 @@ section#home-category i{
 
 .yellow {
   color: $star-yellow;
+}
+
+.profile-icon-size {
+  font-size: $profile-icon-size;
 }

@@ -1,0 +1,49 @@
+<div class="border border-light text-center p-3">
+    <%= image_tag @seller.avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2' %>
+    <p class="h3 bold py-3"><%= @seller.name %></p>
+    <div class="mb-3" id="all-stars-<%= @seller.id %>"></div>
+    <button class="btn btn-outline-success">Contact Me</button>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <p class="text-secondary profile-icon-size"><i class="fa fa-map-marker profile-icon-size pr-3"></i> From</p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p class="text-secondary profile-icon-size"><strong><%= @seller.country %></strong></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <p class="text-secondary profile-icon-size"><i class="fa fa-map profile-icon-size pr-3"></i>Gigs Number</p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p class="text-secondary profile-icon-size"><strong><%= @seller.services.size %></strong></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <p class="text-secondary profile-icon-size"><i class="fa fa-user profile-icon-size pr-3"></i> Member Since</p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p class="text-secondary profile-icon-size"><strong><%= @seller.created_at.strftime("%F") %></strong></p>
+      </div>
+    </div>
+    
+</div>
+
+<div class="border border-light p-3 mt-3">
+  <p class="h3 bold">Description</p>
+  <p class="text-secondary"><%= @seller.description %></p>
+  <hr>
+  <p class="h3 bold pt-3">Language</p>
+  <p class="text-secondary"><%= @seller.language %></p>
+</div>
+
+<script>
+$('#all-stars-<%= @seller.id %>').raty({
+    path: '/assets',
+    readOnly: true,
+    size: 5,
+    score: <%= @seller.buyer_review_star %>
+  });
+</script>

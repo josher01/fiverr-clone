@@ -12,10 +12,29 @@
     
   </head>
   <body>
-    
+    <% if flash[:notice]%>
+      <div class="alert alert-success alert-dismissible fade show">
+        <%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible">
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
     <div>
     <header>
       <%= render 'layouts/navbar' %>
+      <% if !current_page?(root_path) %>
+        <div class="mb-5">
+          <%= render 'shared/category-nav' %>
+        </div>
+      <% end %>
     </header>
     <%= yield %>
     <% unless user_signed_in? %>
@@ -25,6 +44,4 @@
   </div>
 
   </body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 </html>

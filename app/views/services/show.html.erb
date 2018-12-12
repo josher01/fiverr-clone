@@ -1,18 +1,19 @@
-<%= render 'shared/category-nav' %>
 <div class="container">
   <div class="row">
     <!-- Service Photo Slider -->
-    <div class="col-lg-7 col-md-12 border border-light">
-      <div class="h3 py-2 text-capitalize"><%= @service.title %></div>
-      <div class="owl-carousel owl-theme owl-loaded">
-        <div class="owl-stage-outer">
-          <div class="owl-stage">
-            <div class="owl-item" ><%= image_tag 'image1.jpg' %></div>
-            <div class="owl-item" ><%= image_tag 'image2.jpg' %></div>
-            <div class="owl-item" ><%= image_tag 'image3.jpg' %></div>
-            <div class="owl-item" ><%= image_tag 'image1.jpg' %></div>
-            <div class="owl-item" ><%= image_tag 'image2.jpg' %></div>
-            <div class="owl-item" ><%= image_tag 'image3.jpg' %></div>
+    <div class="col-lg-7 col-md-12">
+      <div class="border border-light"> 
+        <div class="h3 py-2 text-capitalize"><%= @service.title %></div>
+        <div class="owl-carousel owl-theme owl-loaded">
+          <div class="owl-stage-outer">
+            <div class="owl-stage">
+              <div class="owl-item" ><%= image_tag 'image1.jpg' %></div>
+              <div class="owl-item" ><%= image_tag 'image2.jpg' %></div>
+              <div class="owl-item" ><%= image_tag 'image3.jpg' %></div>
+              <div class="owl-item" ><%= image_tag 'image1.jpg' %></div>
+              <div class="owl-item" ><%= image_tag 'image2.jpg' %></div>
+              <div class="owl-item" ><%= image_tag 'image3.jpg' %></div>
+            </div>
           </div>
         </div>
       </div>
@@ -57,21 +58,14 @@
         </table>
       </div>   
     </div>
-    <div class="col"></div>
-    <div class="col-lg-4 col-md-12 border border-light"> 
-      <div class="text-center py-5">
-        <%= image_tag @seller.avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2' %>
-        <p class="h3 bold py-3"><%= @seller.name %></p>
-        <div id="stars"></div>
-        <button class="btn btn-outline-success">Contact Me</button>
-        <hr>
-        <p class="text-secondary"><%= @seller.description %></p>
-      </div>
+     
+    <div class="col-lg-5 col-md-12">
+      <%= render partial: 'shared/seller-profile' %>
     </div>
   </div>
 </div>
-<div class="container p-0 mt-4 border border-light">
-  <div class="p-3">
+<div class="container mt-4">
+  <div class="p-3 border border-light">
     <div class="py-3">
       <div class="review-header pt-3">
         <span class="h3">Reviews</span>
@@ -147,18 +141,5 @@
             loop:false
         }
     }
-  });
-</script>
-<script>
-  $('#stars').raty({
-    path: '/assets',
-    score: 1
-  });
-
-  $('#all-stars-<%= @service.id %>').raty({
-    path: '/assets',
-    readOnly: true,
-    size: 30,
-    score: <%= @service.buyer_review_star %>
   });
 </script>

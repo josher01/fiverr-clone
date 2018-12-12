@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   
-  LANGUAGE = [:en, :de, :es, :ru]
-  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -16,6 +14,26 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
+  validates :description, length: {minimum: 150, maximum: 300}
 
+
+  def buyer_review_star
+    if self.services.present?
+      if self.services.size == 0
+        return 0
+      else
+        self.services.each do |service|
+          if service.buyer_review_star.present?
+            results = []
+            results << service.buyer_review_star.to_i
+            total = results.sum
+            return total/results.length
+          end
+        end
+      end
+    else
+      return 0
+    end
+  end
 end
 

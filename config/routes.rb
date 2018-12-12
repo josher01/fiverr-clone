@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
   resources :services, except: [:index]
 
-  resources :users, only: [:new, :create, :show], path_names: {new: 'onboarding'}
+  resources :users, only: [:new, :create, :update], as: "onboarding", path: "seller_onboarding"
+  resources :users, only: [:show], as: "profile", path: "profile"
 
-  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
