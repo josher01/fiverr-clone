@@ -138,3 +138,20 @@ section#home-category i{
 .profile-icon-size {
   font-size: $profile-icon-size;
 }
+
+.inline-block {
+  display: inline-block;
+  padding: 5px;
+}
+
+
+.rangeslider__handle {
+  border-radius: 22px;
+  min-width: 62px;
+  line-height: 42px;
+  text-align: center;
+  
+  &:after {
+    background: 0;
+  }
+}

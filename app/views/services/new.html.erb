@@ -1,1 +1,45 @@
-new.html.erb
+
+<div class="container font-weight-bold">  
+  <%= simple_form_for @service do |f|  %> 
+    <%= f.error_notification %>   
+    <div class="row mb-3">
+      <div class="col-md-6 col-sm-12">
+        <%= f.input :title, label: 'Title', placeholder: 'Put a Headline for Your Service'  %>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <%= f.input :category, label: 'Category', collection: Category.all, prompt: 'Select Category' %>
+      </div>
+    </div>    
+    <%= f.input :description,label: 'Service Description', required: true, hint: 'Minimum 150 words required', placeholder: 'Give some impressive description for your valuable service', input_html: {rows: "3"}  %>
+    <div class="nested">
+      <%= f.simple_fields_for :packages do |package| %>
+        <%= render 'package_fields', f: package %>
+      <% end %>
+      
+    </div>
+    <div>
+      <%= link_to_add_association 'Add Package', f, :packages , class: 'btn btn-outline-primary'%>
+      <span class="inline-block float-right">
+        <div>
+          <%= link_to 'Submit', services_path, class: "btn btn-success px-4" %>
+          <%= f.button :button, "Cancel", type: "reset", class: "ml-3 btn-outline-secondary" %>
+        </div>
+      </span>  
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    var packages_length = $('.form-row a.btn-danger').length;
+      if (packages_length === 1) {
+        $('.nested').hide();
+
+      };
+    
+  });
+// Initialize a new plugin instance for all
+    // e.g. $('input[type="range"]') elements.
+  
+</script>

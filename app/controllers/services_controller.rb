@@ -8,10 +8,14 @@ class ServicesController < ApplicationController
   end
 
   def create
-
+ 
   end
 
+
+
   def new
+    @service = Service.new
+    @service.packages.build
   end
 
   def edit
@@ -26,5 +30,9 @@ class ServicesController < ApplicationController
     @seller = @service.seller
   end
 
+
+  def service_params
+    params.require(:service).permit(:title, :description, :category_id, :favorites_count, packages_attributes: [:id, :_destroy, :name, :price, :description, :is_commercial, :revision_number, :delivery_time])
+  end
 
 end

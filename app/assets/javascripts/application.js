@@ -17,5 +17,8 @@
 //= require bootstrap
 //= require owl.carousel
 //= require jquery.raty.js
+//= require cocoon
+//= require rangeslider.js
+
 
 
