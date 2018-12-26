@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
-
+    @service.packages.build
   end
 
   def create   

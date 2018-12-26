@@ -33,11 +33,20 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :order_items, through: :orders
 
-  validates :name, uniqueness: true, presence: true
+  
   validates :email, uniqueness: true, presence: true
-  validates :description, length: {minimum: 50, maximum: 300}
+  
+  def check_avatar
+    if self.avatar.blank?
+      self.avatar = "https://via.placeholder.com/150"
+    else
+      avatar
+    end
+  end
 
-
+  def seller?
+    self[:language].present? && self[:name].present? && self[:country].present? && self[:description].present?
+  end
 
   def buyer_review_star
     if self.services.present?

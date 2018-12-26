@@ -1,5 +1,5 @@
 <div class="border border-light text-center p-3">
-    <%= image_tag @seller.avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2' %>
+    <%= image_tag @seller.check_avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2', alt: "Upload Photo" %>
     <p class="h3 bold py-3"><%= @seller.name %></p>
     <div class="mb-3" id="all-stars-<%= @seller.id %>"></div>
     <button class="btn btn-outline-success">Contact Me</button>
