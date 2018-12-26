@@ -28,21 +28,21 @@
       </div>
     <% end %>
     <div>
-    <header>
-      <%= render 'layouts/navbar' %>
-      <% if !current_page?(root_path) %>
-        <div class="mb-5">
-          <%= render 'shared/category-nav' %>
-        </div>
+      <header>
+        <%= render 'layouts/navbar' %>
+        <% if !current_page?(root_path) %>
+          <div class="mb-5">
+            <%= render 'shared/category-nav' %>
+          </div>
+        <% end %>
+      </header>
+      <%= yield %>
+      <% unless user_signed_in? %>
+        <%= render partial: 'devise/sessions/new' %>
+        <%= render partial: 'devise/registrations/new' %>
       <% end %>
-    </header>
-    <%= yield %>
-    <% unless user_signed_in? %>
-      <%= render partial: 'devise/sessions/new' %>
-      <%= render partial: 'devise/registrations/new' %>
-    <% end %>
-  </div>
-
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
 
