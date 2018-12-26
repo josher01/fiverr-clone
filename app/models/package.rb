@@ -15,6 +15,9 @@
 #
 
 class Package < ApplicationRecord
+  REVISION_NUMBER = [1,2,3,4,5]
+  PACK_LIST = ['Standard', 'Silver', 'Golden']
+
   belongs_to :service
   has_many :package_metrics
   has_many :order_items
@@ -22,10 +25,11 @@ class Package < ApplicationRecord
   has_many :buyers, through: :orders, source: :user
   has_many :buyer_reviews, through: :buyers
   has_many :cart_items
-  REVISION_NUMBERS = [1,2,3,4,5]
-  PACK_LIST = ['Standard', 'Silver', 'Golden']
+
+  validates :delivery_time, :revision_number, :description, :name, :price, presence: true
+  validates :is_commercial, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 1, less_than: 10000 }
-  validates :revision_numbers,  inclusion: { in: Package::REVISION_NUMBERS }
+  validates :revision_number,  inclusion: { in: Package::REVISION_NUMBER }
 
 
   def seller_reviews

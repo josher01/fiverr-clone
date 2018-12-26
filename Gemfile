@@ -61,6 +61,8 @@ group :development, :test do
   gem 'annotate'
   gem 'ffaker'
   gem 'marginalia'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development do

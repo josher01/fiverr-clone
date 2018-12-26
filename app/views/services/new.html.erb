@@ -7,24 +7,22 @@
         <%= f.input :title, label: 'Title', placeholder: 'Put a Headline for Your Service'  %>
       </div>
       <div class="col-md-6 col-sm-12">
-        <%= f.input :category, label: 'Category', collection: Category.all, prompt: 'Select Category' %>
+        <%= f.input :category_id, label: 'Category', collection: Category.all, prompt: 'Select Category' %>
       </div>
     </div>    
-    <%= f.input :description,label: 'Service Description', required: true, hint: 'Minimum 150 words required', placeholder: 'Give some impressive description for your valuable service', input_html: {rows: "3"}  %>
-    <div class="nested">
+    <%= f.input :description,label: 'Service Description', required: true, hint: 'Minimum 50 words required', placeholder: 'Give some impressive description for your valuable service', input_html: {rows: "3"}  %>
+    <div id="packages">
       <%= f.simple_fields_for :packages do |package| %>
         <%= render 'package_fields', f: package %>
-      <% end %>
-      
+      <% end %>   
     </div>
-    <div>
+        
+    <div class="links">
       <%= link_to_add_association 'Add Package', f, :packages , class: 'btn btn-outline-primary'%>
       <span class="inline-block float-right">
-        <div>
-          <%= link_to 'Submit', services_path, class: "btn btn-success px-4" %>
+          <%= f.submit "Create Service", class: "btn btn-outline-success" %>
           <%= f.button :button, "Cancel", type: "reset", class: "ml-3 btn-outline-secondary" %>
-        </div>
-      </span>  
+      </span> 
     </div>
   <% end %>
 </div>

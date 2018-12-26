@@ -12,7 +12,9 @@ namespace :dev do
         email: "#{name}@fiverr-clone.com",
         password: "12345678",
         description: FFaker::Lorem::sentence(20),
-        avatar: file
+        avatar: file,
+        language: FFaker::Locale::language,
+        country: FFaker::AddressDE::country
       )
       puts user.name
     end
@@ -25,7 +27,6 @@ namespace :dev do
     CAT_LIST.each do |cat|
       Category.create!(title: cat)
     end
-
     puts "Default Categories Created!"
   end
 
@@ -34,7 +35,7 @@ namespace :dev do
     30.times do |i|
       user = User.all.sample
       service = Service.create!(
-        description: FFaker::Lorem::paragraph(sentence_count = 8),
+        description: FFaker::Lorem::paragraphs,
         user_id: user.id,
         category: Category.all.sample,
         title: 'I will create '+ FFaker::Lorem::sentence(1),
@@ -46,16 +47,15 @@ namespace :dev do
 
   task fake_package: :environment do
     Package.destroy_all
-    PACK_LIST = ['Standard', 'Silver', 'Golden']
     Service.all.each do |service|
-      PACK_LIST.each_with_index do |pack, index|
+      Package::PACK_LIST.each_with_index do |pack, index|
         Package.create!(
           name: pack,
           service: service,
           description: FFaker::Lorem::sentence(5),
-          is_commercial: [true,false].sample,
+          is_commercial: true,
           delivery_time: rand(1..30),
-          revision_number: rand(1..9),
+          revision_number: Package::REVISION_NUMBER.sample,
           created_at: FFaker::Time::datetime,
           price: ((index+1)*100) + (rand(1..5)*50)
           )

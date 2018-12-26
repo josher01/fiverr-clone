@@ -1,6 +1,5 @@
 
-<div id="slider-range"></div>
-<form class="nested-fields">
+<div class="nested-fields">
   <div class="form-row py-3">
     <div class="form-group col-sm-12 col-md-4">
       <%= f.input :name, label: 'Package Type', collection: Package::PACK_LIST, required: true, prompt: 'Select Package Type' %>
@@ -13,7 +12,7 @@
   </div>
   <div class="form-row align-items-center ">
     <div class="col-sm-12 col-md-4 ">
-      <%= f.input :is_commercial, as: :check_boxes, label: 'Commercial Use', collection: ['Yes','No'], required: true %>
+      <%= f.input :is_commercial, as: :radio_buttons, label: 'Commercial Use' %>
     </div>
     <div class="col-sm-6 col-md-4">
       <%= f.input :delivery_time, label: 'Delivery Time (Day)', required: true, input_html: {min: 1}  %>
@@ -30,7 +29,7 @@
       <%= link_to_remove_association "remove", f, class: 'btn btn-danger' %>
     </div>
   </div> 
-</form>
+</div>
 
 
 <script>

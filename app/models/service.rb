@@ -15,15 +15,17 @@
 class Service < ApplicationRecord
   belongs_to :category, counter_cache: true
   belongs_to :seller, class_name: "User", foreign_key: :user_id
-  has_many :photos, inverse_of: :service
-  has_many :packages, inverse_of: :service
+  has_many :photos 
+  has_many :packages 
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   accepts_nested_attributes_for :packages, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :photos, reject_if: :all_blank, allow_destroy: true
+  validates :title, :category_id, :description, presence: true
+  validates :description, length: {minimum: 50, maximum: 1000}
 
-  def standard_price
-    self.packages.where("name = 'Standard'").first.price
+  def minimum_price
+    self.packages.minimum(:price)
   end
 
   def buyer_reviews

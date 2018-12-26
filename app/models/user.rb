@@ -35,7 +35,8 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
-  validates :description, length: {minimum: 150, maximum: 300}
+  validates :description, length: {minimum: 50, maximum: 300}
+
 
 
   def buyer_review_star
