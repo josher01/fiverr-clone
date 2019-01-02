@@ -13,6 +13,8 @@
 #
 
 class Service < ApplicationRecord
+  paginates_per 6
+
   belongs_to :category, counter_cache: true
   belongs_to :seller, class_name: "User", foreign_key: :user_id
   has_many :photos 

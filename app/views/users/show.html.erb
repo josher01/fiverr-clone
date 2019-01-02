@@ -5,7 +5,7 @@
     </div>
     <div class="col-sm-12 col-lg-8">
       <div class="border border-light bg-light">
-        <p class="h3 text-center p-3"><%= @seller.name %>'s Gigs</p>
+        <p class="h3 text-center p-3"><%= @seller.name %>'s Services</p>
       </div>
 
         <% if @services.present? %>
@@ -14,8 +14,8 @@
           </div>
         <% else %>
           <div class="text-center py-5">
-            <p class="h4 text-secondary py-3">You don't have gigs yet, let's create one now</p>
-            <%= link_to 'Create Gig', new_service_path, class: 'btn btn-primary' %>
+            <p class="h4 text-secondary py-3">You don't have any service yet, Let's Create One Now</p>
+            <%= link_to 'Create Service', new_service_path, class: 'btn btn-primary' %>
           </div>
         <% end %>
 
