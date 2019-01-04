@@ -3,7 +3,7 @@
     <ul class="nav nav-fill">
       <% @categories.each do |category| %>
         <li class="nav-item">
-          <%= link_to category.title, category_path(category), class: 'nav-link' %>
+          <%= link_to category.title, services_category_path(category), class: 'nav-link' %>
         </li>
       <% end %>
     </ul>  

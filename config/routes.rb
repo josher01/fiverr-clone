@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: "pages#index"
 
   resources :reviews
-  resources :categories
+  resources :categories do
+    member do
+      get :services
+    end
+  end
   resources :services
 
 
