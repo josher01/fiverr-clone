@@ -1,10 +1,17 @@
 class ServicesController < ApplicationController
 
   def index
-    @category = Category.find(params[:category_id])
-    @category_services = @category.services
-    @q = @category_services.ransack(params[:q])
-    @services = @q.result.page(params[:page]).per(6)
+    if params[:search].present?
+      search = "%#{params[:search]}%"
+      @services = Service.search(search).page(params[:page]).per(6)
+      @services.blank? ? flash[:notice] = "No Results Matched, Try Again" : @services
+    elsif params[:q].present? && params[:q].values != ["",""]
+      @services = @q.result.page(params[:page]).per(6)
+      @services.blank? ? flash[:notice] = "No Results Matched, Try Again" : @services
+    else
+      flash[:notice] = "Please input valid keywords"
+      redirect_back fallback_location: root_path
+    end
   end
 
   def new

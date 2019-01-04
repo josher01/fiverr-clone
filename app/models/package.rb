@@ -37,11 +37,11 @@ class Package < ApplicationRecord
   end
 
   def seller_review_star
-    SellerReview.where(package: self).average(:star)
+    SellerReview.where(package: self).average(:star).round(1)
   end
 
   def buyer_review_star
-    BuyerReview.where(package: self).average(:star)
+    BuyerReview.where(package: self).average(:star).round(1)
   end
 
   def buyer_review_count

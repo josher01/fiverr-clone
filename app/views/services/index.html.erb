@@ -1,30 +1,3 @@
 <section id="search_bar">
-  <div class="container-fluid px-5">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-3">
-        <p class="h4 pb-2 underline">Price Range</p>
-        <div class="pt-2">
-          <%= search_form_for @q, url: category_services_path do |f| %> 
-            <span>
-              <%= f.label "$" %>
-              <%= f.number_field :packages_price_gteq %>
-              to
-              <%= f.label "$" %>
-              <%= f.number_field :packages_price_lteq %>
-              <%= f.button :submit, 'Check', class: 'btn-outline-success pl-2' %>
-            </span>
-          <% end %>
-        </div>
-      </div>
-      <div class="col"></div>
-      <div class="col-sm-12 col-md-12 col-lg-8">
-        <div class="row">
-          <%= render partial: 'shared/services-row', locals: {services: @services} %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="pagination text-success justify-content-center mt-5">
-    <%= paginate @services %>
-  </div>
+ <%= render 'selected-services' %>
 </section>

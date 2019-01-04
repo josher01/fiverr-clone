@@ -2,9 +2,9 @@
   <div class="container-fluid px-5">
     <%= link_to image_tag('fiverr-vector-logo-small.png', height: 120, width: 120), root_path, class: "navbar-brand pr-5" %>
     <div class="mr-auto">
-      <%= form_tag("/search", method: :get, class: 'form-inline my-2 my-lg-0') do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search by tag...", class: 'form-control mr-sm-2' %>
-        <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-success my-2 my-sm-0' %>
+      <%= form_tag services_path, method: :get do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "Search" %>
       <% end %>
     </div> 
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>

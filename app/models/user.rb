@@ -58,7 +58,7 @@ class User < ApplicationRecord
             results = []
             results << service.buyer_review_star.to_i
             total = results.sum
-            return total/results.length
+            return (total/results.length).round(1)
           end
         end
       end

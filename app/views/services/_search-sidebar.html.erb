@@ -1,0 +1,10 @@
+<%= search_form_for @q, url: services_path do |f| %> 
+  <span>
+    <%= f.label "$" %>
+    <%= f.number_field :packages_price_gteq %>
+    to
+    <%= f.label "$" %>
+    <%= f.number_field :packages_price_lteq %>
+    <%= f.button :submit, 'Check', class: 'btn-outline-success pl-2' %>
+  </span>
+<% end %>

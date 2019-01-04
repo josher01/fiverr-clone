@@ -13,7 +13,6 @@
 #
 
 class Service < ApplicationRecord
-  paginates_per 6
 
   belongs_to :category, counter_cache: true
   belongs_to :seller, class_name: "User", foreign_key: :user_id
@@ -25,6 +24,11 @@ class Service < ApplicationRecord
   accepts_nested_attributes_for :photos, reject_if: :all_blank, allow_destroy: true
   validates :title, :category_id, :description, presence: true
   validates :description, length: {minimum: 50, maximum: 1000}
+
+  def self.search(keyword)
+    where('description LIKE ? OR title LIKE ?', keyword, keyword).order(created_at: :desc)
+  end
+
 
   def minimum_price
     self.packages.minimum(:price)
@@ -39,7 +43,7 @@ class Service < ApplicationRecord
   end
 
   def buyer_review_star
-    self.buyer_reviews.average(:star)
+    self.buyer_reviews.average(:star).round(1)
   end
 
   def buyer_review_count

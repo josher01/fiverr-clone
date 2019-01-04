@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   root to: "pages#index"
 
   resources :reviews
-  resources :category, only: [:show] do
-    resources :services, only: [:index]
-  end
-  resources :services, except: [:index] 
+  resources :categories
+  resources :services
+
 
   resources :users, only: [:new, :create, :update], as: "onboarding", path: "seller_onboarding"
   resources :users, only: [:show], as: "profile", path: "profile"
