@@ -11,4 +11,6 @@
 
 class Category < ApplicationRecord
   has_many :services
+
+  CAT_LIST = ["Graphic & Design", "Digital Marketing", "Music & Audio", "Programming & Tech", "Fun & Lifestyle", "Writing & Translation"]
 end

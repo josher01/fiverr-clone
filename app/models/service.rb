@@ -50,4 +50,11 @@ class Service < ApplicationRecord
     self.buyer_reviews.size
   end
 
+  def is_favorited?(user)
+    if user.favorited_services
+      user.favorited_services.include?(self)
+    else
+      false
+    end
+  end
 end

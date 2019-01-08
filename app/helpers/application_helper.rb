@@ -1,22 +1,21 @@
 module ApplicationHelper
-  CAT_LIST = ["Graphic & Design", "Digital Marketing", "Music & Audio", "Programming & Tech", "Fun & Lifestyle", "Writing & Translation"]
-  def category_fa_icon(category_name)
-    
-    if category_name == CAT_LIST[0]
+  #category icon helper
+  def category_fa_icon(category_name)   
+    if category_name == Category::CAT_LIST[0]
       "fa fa-laptop"
-    elsif category_name == CAT_LIST[1]
+    elsif category_name == Category::CAT_LIST[1]
       "fa fa-pencil"
-    elsif category_name == CAT_LIST[2]
+    elsif category_name == Category::CAT_LIST[2]
       "fa fa-music"
-    elsif category_name == CAT_LIST[3]
+    elsif category_name == Category::CAT_LIST[3]
       "fa fa-codepen"
-    elsif category_name == CAT_LIST[4]
+    elsif category_name == Category::CAT_LIST[4]
       "fa fa-briefcase"
-    elsif category_name == CAT_LIST[5]
+    elsif category_name == Category::CAT_LIST[5]
       "fa fa-industry"
     end 
   end
-
+  #pop up log-in form integrating with devise
   def resource_name
     :user
   end
@@ -31,6 +30,18 @@ module ApplicationHelper
  
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  #helper for displaying correct status of favorite icon
+  def favorite_heart(user, service)
+    unless user_signed_in?
+      return "<i class='fa fa-heart'></i>"
+    end
+    if service.is_favorited?(user)
+      link_to "<i class='fa fa-heart'></i>".html_safe, favorite_path(id: service.id), method: :delete
+    else
+      link_to "<i class='fa fa-heart-o'></i>".html_safe, favorites_path(service_id: service.id), method: :post
+    end
   end
 end
 

@@ -5,7 +5,7 @@
       <% @categories.each do |category| %>
         <div class="col-md-4 mb-4 text-center">
           <i class="<%= category_fa_icon(category.title)%> border-bottom border-primary"></i>
-          <h3 class="pt-3"><%= link_to category.title, category_path(category) %></h3>
+          <h3 class="pt-3"><%= link_to category.title, services_category_path(category) %></h3>
           <p>Lorem ipsum dolor sit amet, consectetur.</p>
         </div>
       <% end %>

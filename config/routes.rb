@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :services
+  resources :favorites, only: [:create, :destroy]
 
 
   resources :users, only: [:new, :create, :update], as: "onboarding", path: "seller_onboarding"

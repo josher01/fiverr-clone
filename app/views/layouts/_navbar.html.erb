@@ -4,7 +4,7 @@
     <div class="mr-auto">
       <%= form_tag services_path, method: :get do %>
         <%= text_field_tag :search %>
-        <%= submit_tag "Search" %>
+        <%= submit_tag "Search", class: 'btn btn-success' %>
       <% end %>
     </div> 
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
