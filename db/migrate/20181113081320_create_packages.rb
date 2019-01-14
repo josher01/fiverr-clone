@@ -2,7 +2,7 @@ class CreatePackages < ActiveRecord::Migration[5.2]
   def change
     create_table :packages do |t|
       t.string :name
-      t.references :service, foreign_key: true
+      t.references :service
       t.integer :price
       t.text :description
 
