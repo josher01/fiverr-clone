@@ -36,7 +36,7 @@ namespace :dev do
       user = User.all.sample
       service = Service.create!(
         description: FFaker::Lorem::paragraphs,
-        seller_id: user.id,
+        user_id: user.id,
         category: Category.all.sample,
         title: 'I will create '+ FFaker::Lorem::sentence(1),
         created_at: FFaker::Time::datetime
@@ -138,7 +138,7 @@ namespace :dev do
         package = buyer_review.package
         SellerReview.create!(
           package: package,
-          seller_id: package.service.seller_id,
+          seller_id: package.service.user_id,
           star: 5,
           comment: FFaker::Lorem::sentence(1)
           )

@@ -15,7 +15,7 @@
 class Service < ApplicationRecord
 
   belongs_to :category, counter_cache: true
-  belongs_to :seller, class_name: "User", foreign_key: :seller_id
+  belongs_to :seller, class_name: "User", foreign_key: :user_id
   has_many :photos 
   has_many :packages 
   has_many :favorites, dependent: :destroy
@@ -43,7 +43,11 @@ class Service < ApplicationRecord
   end
 
   def buyer_review_star
-    self.buyer_reviews.average(:star).round(1)
+    if self.buyer_reviews.average(:star).blank?
+      return 0
+    else
+      self.buyer_reviews.average(:star).round(1)
+    end
   end
 
   def buyer_review_count
