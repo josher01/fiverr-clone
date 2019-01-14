@@ -35,7 +35,7 @@ module ApplicationHelper
   #helper for displaying correct status of favorite icon
   def favorite_heart(user, service)
     unless user_signed_in?
-      return "<i class='fa fa-heart'></i>"
+      return "<i class='fa fa-heart'></i>".html_safe
     end
     if service.is_favorited?(user)
       link_to "<i class='fa fa-heart'></i>".html_safe, favorite_path(id: service.id), method: :delete
