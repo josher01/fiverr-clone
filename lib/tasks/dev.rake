@@ -69,11 +69,14 @@ namespace :dev do
       50.times do |i|
         user = User.all.sample
         service = Service.all.sample
-        favorite = Favorite.create!(
-          service: service,
-          user: user,
-          created_at: FFaker::Time::datetime
-        )
+        favorite = Favorite.find(user_id: user.id, service_id: service.id)
+        if favorite.nil?
+          Favorite.create!(
+            service: service,
+            user: user,
+            created_at: FFaker::Time::datetime
+          )
+        end
       end
     puts "Total #{Favorite.count} favorites created !"
   end
