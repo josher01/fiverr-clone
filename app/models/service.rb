@@ -15,7 +15,7 @@
 class Service < ApplicationRecord
 
   belongs_to :category, counter_cache: true
-  belongs_to :seller, class_name: "User", foreign_key: :user_id
+  belongs_to :seller, class_name: "User", foreign_key: :seller_id
   has_many :photos 
   has_many :packages 
   has_many :favorites, dependent: :destroy
