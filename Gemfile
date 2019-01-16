@@ -62,7 +62,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :development do

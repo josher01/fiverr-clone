@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_12_12_054355) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cart_items", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "package_id"
+    t.bigint "cart_id"
+    t.bigint "package_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "service_id"
+    t.bigint "user_id"
+    t.bigint "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_favorites_on_service_id"
@@ -44,8 +47,8 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "package_id"
-    t.integer "order_id"
+    t.bigint "package_id"
+    t.bigint "order_id"
     t.integer "price"
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "shipping_status"
     t.integer "payment_status"
     t.string "username"
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
   end
 
   create_table "package_metrics", force: :cascade do |t|
-    t.integer "package_id"
+    t.bigint "package_id"
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
 
   create_table "packages", force: :cascade do |t|
     t.string "name"
-    t.integer "service_id"
+    t.bigint "service_id"
     t.integer "price"
     t.text "description"
     t.datetime "created_at", null: false
@@ -93,7 +96,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "service_id"
+    t.bigint "service_id"
     t.index ["service_id"], name: "index_photos_on_service_id"
   end
 
@@ -105,13 +108,13 @@ ActiveRecord::Schema.define(version: 2018_12_12_054355) do
     t.string "type"
     t.integer "buyer_id"
     t.integer "seller_id"
-    t.integer "package_id"
+    t.bigint "package_id"
     t.index ["package_id"], name: "index_reviews_on_package_id"
   end
 
   create_table "services", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "category_id"
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.string "title"
     t.text "description"
     t.integer "favorites_count", default: 0
