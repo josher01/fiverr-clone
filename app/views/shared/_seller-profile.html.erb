@@ -1,5 +1,9 @@
 <div class="border border-light text-center p-3">
-    <%= image_tag @seller.check_avatar, size: '180x180', class: 'img-fluid rounded-circle pt-2', alt: "Upload Photo" %>
+    <% if @seller.avatar.present? %>
+      <%= image_tag @seller.avatar_url(:medium), class: 'img-fluid rounded-circle pt-2', alt: "Upload Photo" %>
+    <% else %>
+      <%= image_tag default_image_url, size: '150x150', class: 'img-fluid rounded-circle pt-2', alt: "Upload Photo" %>
+    <% end %>
     <p class="h3 bold py-3"><%= @seller.name %></p>
     <div class="mb-3" id="all-stars-<%= @seller.id %>"></div>
     <button class="btn btn-outline-success">Contact Me</button>

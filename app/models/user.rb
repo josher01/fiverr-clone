@@ -26,6 +26,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
   has_many :services, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_services, through: :favorites, source: :service
@@ -40,7 +41,7 @@ class User < ApplicationRecord
     if self.avatar.blank?
       self.avatar = "https://via.placeholder.com/150"
     else
-      avatar
+      avatar_url
     end
   end
 

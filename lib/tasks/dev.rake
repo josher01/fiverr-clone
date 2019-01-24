@@ -6,13 +6,12 @@ namespace :dev do
     User.destroy_all 
     20.times do |i|
       name = FFaker::Name::first_name
-      file = "https://randomuser.me//api//portraits//women//#{i}.jpg"
       user = User.create!(
         name: name,
         email: "#{name}@fiverr-clone.com",
         password: "12345678",
+        avatar: "",
         description: FFaker::Lorem::sentence(20),
-        avatar: file,
         language: FFaker::Locale::language,
         country: FFaker::AddressDE::country
       )

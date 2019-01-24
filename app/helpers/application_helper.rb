@@ -43,6 +43,11 @@ module ApplicationHelper
       link_to "<i class='fa fa-heart-o'></i>".html_safe, favorites_path(service_id: service.id), method: :post
     end
   end
+
+  def default_image_url
+    i = (1..20).to_a.sample
+    "https://randomuser.me//api//portraits//women//#{i}.jpg"
+  end
 end
 
 

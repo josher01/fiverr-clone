@@ -7,7 +7,11 @@
         <h5 class="card-title text-truncate text-capitalize">
           <%= service.title %>
         </h5>
-        <p><%= image_tag service.seller.avatar, size: '50x50', class: 'rounded-circle' %><span class="pl-3"><%= link_to service.seller.name, profile_path(service.user_id) %></span></p>
+        <% if service.seller.avatar_url.present? %>
+          <p><%= image_tag service.seller.avatar_url(:small), class: 'rounded-circle' %><span class="pl-3"><%= link_to service.seller.name, profile_path(service.user_id) %></span></p>
+        <% else %>
+          <p><%= image_tag default_image_url, size: '50x50', class: 'rounded-circle' %><span class="pl-3"><%= link_to service.seller.name, profile_path(service.user_id) %></span></p>
+        <% end %>
         <p class="card-text text-truncate">
             <%= service.description %>
         </p>

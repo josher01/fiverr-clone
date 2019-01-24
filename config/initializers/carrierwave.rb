@@ -1,5 +1,7 @@
 CarrierWave.configure do |config|
-  config.storage    = :aws
+  if Rails.env.production?
+    config.storage    = :aws
+
   config.aws_bucket = ENV.fetch('S3_BUCKET_NAME') # for AWS-side bucket access permissions config, see section below
   config.aws_acl    = 'public-read'
 
@@ -30,4 +32,5 @@ CarrierWave.configure do |config|
   # config.aws_signer = -> (unsigned_url, options) do
   #   Aws::CF::Signer.sign_url(unsigned_url, options)
   # end
+  end
 end
