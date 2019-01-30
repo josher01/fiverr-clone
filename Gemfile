@@ -49,7 +49,6 @@ gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
 gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'language_list', '~> 1.2', '>= 1.2.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.12'
-gem 'carrierwave-aws'
 gem 'carrierwave'
 gem 'mini_magick'
 
