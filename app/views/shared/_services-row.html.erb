@@ -8,7 +8,6 @@
           <%= service.title %>
         </h5>
         <% if !!service.seller.avatar_url %>
-        <% binding.pry %>
           <p><%= image_tag service.seller.avatar_url(:small), class: 'rounded-circle' %><span class="pl-3"><%= link_to service.seller.name, profile_path(service.user_id) %></span></p>
         <% else %>
           <p><%= image_tag default_image_url, size: '50x50', class: 'rounded-circle' %><span class="pl-3"><%= link_to service.seller.name, profile_path(service.user_id) %></span></p>

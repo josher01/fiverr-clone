@@ -83,7 +83,11 @@
             <div class="container-fluid pb-5">
                 <div class="d-flex justify-content-start buyer_review">
                   <div class="buyer_img pr-3">
-                    <%= image_tag buyer_review.buyer.avatar, size: '100x100', class: 'img-fluid rounded-circle' %>
+                    <% if buyer_review.buyer.avatar_url %>
+                      <%= image_tag buyer_review.buyer.avatar_url(:small), class: 'img-fluid rounded-circle' %>
+                    <% else %>
+                      <%= image_tag default_image_url, size: '50x50', class: 'img-fluid rounded-circle' %>
+                    <% end %>
                   </div>
                   <div class="align-self-center">
                     <%= buyer_review.buyer.name %>
@@ -97,7 +101,13 @@
             </div>
             <div class="container-fluid pt-5">
                 <div class="d-flex justify-content-end seller_review">
-                  <div class="seller_img pr-3"><%= image_tag seller_review.seller.avatar, size: '100x100', class: 'img-fluid rounded-circle' %></div>
+                  <div class="seller_img pr-3">
+                    <% if seller_review.seller.avatar_url %>
+                      <%= image_tag seller_review.seller.avatar_url(:small), class: 'img-fluid rounded-circle' %>
+                    <% else %>
+                      <%= image_tag default_image_url, size: '100x100', class: 'img-fluid rounded-circle' %>
+                    <% end %>  
+                  </div>
                   <div class="align-self-center">
                     <%= seller_review.seller.name %>
                     <span class="pl-1 yellow"><%= image_tag 'star-on.png' %> <%= package.seller_review_star.to_i %></span>    
