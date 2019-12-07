@@ -1,7 +1,7 @@
 <% services.each do |service| %>
   <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 p-3">
     <div class="card">
-      <%= link_to image_tag("http://www.lorempixel.com/400/200/sports/2", class: 'card-img-top img-fluid', alt: "https://via.placeholder.com/400/200"), service_path(service) %>
+      <%= link_to image_tag("http://lorempixel.com/400/200/sports/2", class: 'card-img-top img-fluid', alt: "https://via.placeholder.com/400/200"), service_path(service) %>
       <!--<img class="card-img-top img-fluid" src="http://www.lorempixel.com/400/200/sports/2" alt="Card img cap">-->
       <div class="card-body">
         <h5 class="card-title text-truncate text-capitalize">
@@ -15,12 +15,12 @@
         <p class="card-text text-truncate">
             <%= service.description %>
         </p>
-      </div> 
+      </div>
       <div class="card-footer">
         <%= favorite_heart(current_user, service) %>
         <span><%= service.favorited_users.size %></span>
         <span class="float-right small">STARTING AT <span class="h5">$<%= service.minimum_price %></span></span>
-      </div>    
-    </div>   
+      </div>
+    </div>
   </div>
 <% end %>

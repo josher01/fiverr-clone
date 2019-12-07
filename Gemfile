@@ -33,8 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'devise'
-gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem "devise", ">= 4.7.1"
+gem 'bootstrap', ">= 4.3.1"
 gem 'sprockets-rails', '~> 3.2.1'
 gem 'jquery-rails', '~> 4.3'
 gem 'kaminari', '~> 1.1'
@@ -50,7 +50,8 @@ gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'language_list', '~> 1.2', '>= 1.2.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.12'
 gem 'carrierwave'
-gem 'mini_magick'
+gem "mini_magick", ">= 4.9.4"
+gem "nokogiri", ">= 1.10.4"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
