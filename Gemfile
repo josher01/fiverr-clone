@@ -37,7 +37,7 @@ gem "devise", ">= 4.7.1"
 gem 'bootstrap', ">= 4.3.1"
 gem 'sprockets-rails', '~> 3.2.1'
 gem 'jquery-rails', '~> 4.3'
-gem 'kaminari', '~> 1.1'
+gem 'kaminari', '~> 1.2'
 gem 'mini_racer', '~> 0.2.0'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'omniauth-github', '~> 1.3'
